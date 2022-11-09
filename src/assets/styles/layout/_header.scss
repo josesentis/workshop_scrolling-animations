@@ -1,0 +1,28 @@
+#Header {
+    --width: 100%;
+    --height: var(--header-height);
+    --color: var(--secondary);
+    --bg: var(--primary);
+    --padding-v: var(--padding-xs);
+    --padding-h: var(--padding-xs);
+    --font-size: var(--font-size-base);
+}
+
+#Header {
+    @include z-index($z-index-header);
+    position: fixed;
+    width: var(--width);
+    height: var(--height);
+    right: 0;
+    top: 0;
+    padding: var(--padding-v) var(--padding-h);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color);
+    background-color: var(--bg);
+
+    transform: translate3d(0, var(--y-header), 10px);
+}
