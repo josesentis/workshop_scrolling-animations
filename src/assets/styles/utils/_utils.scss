@@ -1,0 +1,25 @@
+// Z-Index
+// -------------------------------
+@mixin z-index($level) {
+  z-index: $level;
+  transform: translateZ($level + px) ;
+}
+
+@mixin isTouch() {
+  @media (hover: none) {
+    @content;
+  }
+}
+
+@mixin isCursor() {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin basic-a() {
+  outline: 0;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
