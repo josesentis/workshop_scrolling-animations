@@ -1,5 +1,5 @@
 const Maths = {
-    normalize: function (max, min, val) {
+    normalize: function (min, max, val) {
         return (val - min) / (max - min);
     },
     lerp: function (s, e, t) {

@@ -42,20 +42,20 @@ export default class Main {
 
   static loop() {
     // ---- 2 ---- //
-    // this.x = Maths.map(this.mouse.x, 0, window.innerWidth, 0, 250);
-    // this.y = Maths.map(this.mouse.y, 0, window.innerHeight, 0, 250);
+    // this.x = Maths.normalize(0, window.innerWidth, this.mouse.x) * 100;
+    // this.y = Maths.normalize(0, window.innerHeight, this.mouse.y) * 100;
 
     // for (let i = 0; i < this.targets.length; i++) {
     //   const box = this.targets[i];
     //   gsap.set(box, {
-    //     x: this.x,
-    //     y: this.y
+    //     x: `${this.x}%`,
+    //     y: `${this.y}%`
     //   });
     // }
 
     // ---- 3 ---- //
-    // const x = Maths.map(this.mouse.x, 0, window.innerWidth, 0, 250);
-    // const y = Maths.map(this.mouse.y, 0, window.innerHeight, 0, 250);
+    // const x = Maths.normalize(0, window.innerWidth, this.mouse.x) * 100;
+    // const y = Maths.normalize(0, window.innerHeight, this.mouse.y) * 100;
 
     // this.x = Maths.lerp(this.x, x, 0.05);
     // this.y = Maths.lerp(this.y, y, 0.05);
