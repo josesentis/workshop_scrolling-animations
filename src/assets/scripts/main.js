@@ -2,7 +2,6 @@ import LocomotiveScroll from 'locomotive-scroll';
 
 export default class Main {
   scroller;
-  items;
 
   static init() {
     this.scroller = new LocomotiveScroll({
