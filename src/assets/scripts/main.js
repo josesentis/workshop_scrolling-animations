@@ -1,18 +1,16 @@
-import VirtualScroll from 'virtual-scroll'
+import LocomotiveScroll from 'locomotive-scroll';
 
 export default class Main {
   scroller;
   items;
 
   static init() {
-    const items = document.querySelectorAll('[data-scroll]');
-
-    this.scroller = new VirtualScroll()
-    this.scroller.on(event => {
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        item.style.transform = `translateY(${event.y}px)`;
-      }
+    this.scroller = new LocomotiveScroll({
+      el: document.querySelector('[data-scroll-container]'),
+      smooth: true,
+      tablet: { smooth: true },
+      smartphone: { smooth: true },
+      getDirection: true
     });
   }
 }
@@ -22,4 +20,3 @@ if (document.attachEvent ? document.readyState === 'complete' : document.readySt
 } else {
   document.addEventListener('DOMContentLoaded', Main.init);
 }
-

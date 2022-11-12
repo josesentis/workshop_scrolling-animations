@@ -7,27 +7,14 @@ html{
 body{
     width: 100%;
     min-height: 100%;
+    overflow: hidden;
 
     main {
+        position: fixed;
+        @include z-index($z-index-wrap);
+        height: 100%;
+        top:0;
+        left:0;
         width: 100%;
     }
-
-    &:not(.__scroll-manual){
-        overflow: hidden;
-
-        main {
-          position: fixed;
-          @include z-index($z-index-wrap);
-          height: 100%;
-          top:0;
-          left:0;
-        }
-    }
-
-    &.__scroll-manual {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-    }
 }
-
