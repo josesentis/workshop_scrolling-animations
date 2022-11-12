@@ -13,9 +13,11 @@
     position: fixed;
     width: var(--width);
     height: var(--height);
+    padding: var(--padding-v) var(--padding-h);
     right: 0;
     top: 0;
-    padding: var(--padding-v) var(--padding-h);
+    transform: translate3d(0, 0, 0);
+    transition: transform .3s ease-out;
 
     display: flex;
     justify-content: center;
@@ -24,5 +26,7 @@
     color: var(--color);
     background-color: var(--bg);
 
-    transform: translate3d(0, var(--y-header), 10px);
+    ._scrolled-down & {
+        transform: translate3d(0, -100%, 0);
+    }
 }

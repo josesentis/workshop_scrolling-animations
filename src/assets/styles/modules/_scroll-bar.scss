@@ -1,0 +1,19 @@
+.scroll-bar {
+    height: 5px;
+    position: absolute;
+    top: var(--header-height);
+    transform: translate3d(0, 0, 0);
+    transition: transform .3s ease-out;
+    width: 100%;
+    z-index: 10;
+
+    ._scrolled-down & { transform: translate3d(0, calc(-1 * var(--header-height)), 0); }
+
+    &__inner {
+        height: 100%;
+        background-color: red;
+        position: absolute;
+        transform: scale3d(0, 1, 1);
+        width: 100%;
+    }
+}

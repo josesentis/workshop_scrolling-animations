@@ -1,5 +1,28 @@
-// Z-Index
-// -------------------------------
+$browser-context: 16;
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return #{($pixels / $context) * 1em};
+}
+@function rem($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return #{($pixels / $context) * 1rem};
+}
+
+
 @mixin z-index($level) {
   z-index: $level;
   transform: translateZ($level + px) ;

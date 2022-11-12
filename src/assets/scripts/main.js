@@ -1,16 +1,11 @@
-import LocomotiveScroll from 'locomotive-scroll';
+import Scroll from "./classes/Scroll";
 
 export default class Main {
-  scroller;
+  scroll;
 
   static init() {
-    this.scroller = new LocomotiveScroll({
-      el: document.querySelector('[data-scroll-container]'),
-      smooth: true,
-      tablet: { smooth: true },
-      smartphone: { smooth: true },
-      getDirection: true
-    });
+    this.scroll = new Scroll();
+    this.scroll.init();
   }
 }
 
