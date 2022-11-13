@@ -117,6 +117,8 @@ class Scroll {
         const progress = Math.abs(this.scrollPosition) / (this.documentHeight - window.innerHeight);
         console.log('PROGRESS', this.scrollPosition, this.documentHeight, window.innerHeight)
         this.scrollProgress.style.transform = `scale3d(${progress}, 1, 1)`;
+
+        // TODOOOO STYLES AL FOOTER
     }
 }
 

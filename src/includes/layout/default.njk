@@ -14,14 +14,13 @@
         <main id='Main'>
             <article data-scroll-container>
                 {{ content | safe }}
+                {# FOOTER #}
+                {% include "layout/footer.njk" %}
             </article>
         </main>
 
         {# SCROLLBAR #}
         {% include "modules/scroll_bar.njk" %}
-
-        {# FOOTER #}
-        {% include "layout/footer.njk" %}
 
         <script async defer src="/assets/preload.js"></script>
     </body>

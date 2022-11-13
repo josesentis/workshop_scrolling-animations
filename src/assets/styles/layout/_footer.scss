@@ -1,5 +1,22 @@
 #Footer {
-    --font-size: var(--font-size-small);
+    --width: 100%;
+    --height: var(--header-height);
+    --color: var(--secondary);
+    --bg: var(--primary);
+    --padding-v: var(--padding-xs);
+    --padding-h: var(--padding-xs);
+    --font-size: var(--font-size-base);
+}
 
-    padding: var(--padding-s) var(--padding-xs);
+#Footer {
+    width: var(--width);
+    height: var(--height);
+    padding: var(--padding-v) var(--padding-h);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color);
+    background-color: var(--bg);
 }
