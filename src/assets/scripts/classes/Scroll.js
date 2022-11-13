@@ -1,4 +1,3 @@
-// import gsap, { Linear } from 'gsap';
 import LocomotiveScroll from 'locomotive-scroll';
 
 class Scroll {
@@ -20,8 +19,8 @@ class Scroll {
         this.containerSelector = opts.containerSelector || this.defaults.containerSelector;
 
         // ----- 2 ----- //
-        this.calcDocumentSizes();
-        window.addEventListener('resize', () => this.calcDocumentSizes());
+        // this.calcDocumentSizes();
+        // window.addEventListener('resize', () => this.calcDocumentSizes());
     }
 
     init() {
@@ -51,75 +50,61 @@ class Scroll {
 
     scroll(props) {
         // ----- 1 ----- //
-        // console.log('PROPS', props);
+        console.log('PROPS', props);
 
         // ----- 2 ----- //
-        const { direction, scroll } = props;
+        // const { direction, scroll } = props;
 
-        this.scrollPosition = scroll.y;
+        // this.scrollPosition = scroll.y;
 
-        if (scroll.y > 0) document.documentElement.classList.add('_scrolled-v');
-        else document.documentElement.classList.remove('_scrolled-v');
+        // if (scroll.y > 0) document.documentElement.classList.add('_scrolled-v');
+        // else document.documentElement.classList.remove('_scrolled-v');
 
-        if (scroll.x > 0) document.documentElement.classList.add('_scrolled-h');
-        else document.documentElement.classList.remove('_scrolled-x');
+        // if (scroll.x > 0) document.documentElement.classList.add('_scrolled-h');
+        // else document.documentElement.classList.remove('_scrolled-x');
 
-        if (direction === 'up') {
-            document.documentElement.classList.add('_scrolled-up');
-            document.documentElement.classList.remove('_scrolled-down');
-            this.direction = direction;
-        } else if (direction === 'down') {
-            document.documentElement.classList.remove('_scrolled-up');
-            document.documentElement.classList.add('_scrolled-down');
-            this.direction = direction;
-        } else {
-            document.documentElement.classList.remove('_scrolled-up');
-            document.documentElement.classList.remove('_scrolled-down');
-        }
+        // if (direction === 'up') {
+        //     document.documentElement.classList.add('_scrolled-up');
+        //     document.documentElement.classList.remove('_scrolled-down');
+        //     this.direction = direction;
+        // } else if (direction === 'down') {
+        //     document.documentElement.classList.remove('_scrolled-up');
+        //     document.documentElement.classList.add('_scrolled-down');
+        //     this.direction = direction;
+        // } else {
+        //     document.documentElement.classList.remove('_scrolled-up');
+        //     document.documentElement.classList.remove('_scrolled-down');
+        // }
 
-        if (this.progress) this.calcScrollProgress();
+        // if (this.progress) this.calcScrollProgress();
 
-        // ----- 3 ----- //
+        // ----- 2 ----- //
         // console.log(props.currentElements);
 
-        // Individual elements
-        // for (let i = 0; i < props.currentElements.length; i++) {
-        //     const element = array[i];
-        //     if (typeof element === 'object') {
-        //         const target = element.el;
-
-        //         if (target.classList.contains('__show')) {
-        //             const { top } = target.getBoundingClientRect();
-        //             if (window.innerHeight * 0.9 > top) target.classList.add('animated');
-        //         } else if (target.classList.contains('__line')) {
-        //             const { progress } = element;
-        //             target.style.transform = `scale3d(${progress}, 1, 1)`;
-        //         } else if (target.classList.contains('__video')) {
-        //             target.play();
-        //         }
-        //     }
-        // }
+        // ----- 3 ----- //
+        // const keys = Object.keys(props.currentElements);
+        // keys.map(key => {
+        //     if (key === 'el0') console.log(key, props.currentElements[key].progress);
+        // });
     }
 
     // ----- 4 ----- //
     // call(props) {
-    //     if (props === 'block-3') console.log('Block 3');
+    //     console.log(props);
+    //     if (props === 'footer') alert('Footer');
     // }
 
     // ----- 2 ----- //
-    calcDocumentSizes() {
-        const { body, documentElement: html } = document;
+    // calcDocumentSizes() {
+    //     const { body, documentElement: html } = document;
 
-        this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-    }
+    //     this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    // }
 
-    calcScrollProgress() {
-        const progress = Math.abs(this.scrollPosition) / (this.documentHeight - window.innerHeight);
-        console.log('PROGRESS', this.scrollPosition, this.documentHeight, window.innerHeight)
-        this.scrollProgress.style.transform = `scale3d(${progress}, 1, 1)`;
-
-        // TODOOOO STYLES AL FOOTER
-    }
+    // calcScrollProgress() {
+    //     const progress = Math.abs(this.scrollPosition) / (this.documentHeight - window.innerHeight);
+    //     this.scrollProgress.style.transform = `scale3d(${progress}, 1, 1)`;
+    // }
 }
 
 export default Scroll;
