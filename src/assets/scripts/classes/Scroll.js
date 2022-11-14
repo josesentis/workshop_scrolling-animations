@@ -18,9 +18,8 @@ class Scroll {
         this.progressId = opts.progressId || this.defaults.progressId;
         this.containerSelector = opts.containerSelector || this.defaults.containerSelector;
 
-        // ----- 2 ----- //
-        // this.calcDocumentSizes();
-        // window.addEventListener('resize', () => this.calcDocumentSizes());
+        this.calcDocumentSizes();
+        window.addEventListener('resize', () => this.calcDocumentSizes());
     }
 
     init() {
@@ -35,9 +34,7 @@ class Scroll {
         });
 
         this.scroller.on('scroll', params => this.scroll(params));
-
-        // ----- 4 ----- //
-        // this.scroller.on('call', params => this.call(params));
+        this.scroller.on('call', (func, args, obj) => this.call(func, args, obj));
     }
 
     destroy() {
@@ -49,62 +46,60 @@ class Scroll {
     }
 
     scroll(props) {
-        // ----- 1 ----- //
-        console.log('PROPS', props);
+        // position, limit, speed, direction and currentElements
+        const { direction, scroll } = props;
 
-        // ----- 2 ----- //
-        // const { direction, scroll } = props;
+        this.scrollPosition = scroll.y;
 
-        // this.scrollPosition = scroll.y;
+        if (scroll.y > 0) document.documentElement.classList.add('_scrolled-v');
+        else document.documentElement.classList.remove('_scrolled-v');
 
-        // if (scroll.y > 0) document.documentElement.classList.add('_scrolled-v');
-        // else document.documentElement.classList.remove('_scrolled-v');
+        if (scroll.x > 0) document.documentElement.classList.add('_scrolled-h');
+        else document.documentElement.classList.remove('_scrolled-x');
 
-        // if (scroll.x > 0) document.documentElement.classList.add('_scrolled-h');
-        // else document.documentElement.classList.remove('_scrolled-x');
+        if (direction === 'up') {
+            document.documentElement.classList.add('_scrolled-up');
+            document.documentElement.classList.remove('_scrolled-down');
+            this.direction = direction;
+        } else if (direction === 'down') {
+            document.documentElement.classList.remove('_scrolled-up');
+            document.documentElement.classList.add('_scrolled-down');
+            this.direction = direction;
+        } else {
+            document.documentElement.classList.remove('_scrolled-up');
+            document.documentElement.classList.remove('_scrolled-down');
+        }
 
-        // if (direction === 'up') {
-        //     document.documentElement.classList.add('_scrolled-up');
-        //     document.documentElement.classList.remove('_scrolled-down');
-        //     this.direction = direction;
-        // } else if (direction === 'down') {
-        //     document.documentElement.classList.remove('_scrolled-up');
-        //     document.documentElement.classList.add('_scrolled-down');
-        //     this.direction = direction;
-        // } else {
-        //     document.documentElement.classList.remove('_scrolled-up');
-        //     document.documentElement.classList.remove('_scrolled-down');
-        // }
+        if (this.progress) this.calcScrollProgress();
 
-        // if (this.progress) this.calcScrollProgress();
+        const keys = Object.keys(props.currentElements);
 
-        // ----- 2 ----- //
-        // console.log(props.currentElements);
-
-        // ----- 3 ----- //
-        // const keys = Object.keys(props.currentElements);
-        // keys.map(key => {
-        //     if (key === 'el0') console.log(key, props.currentElements[key].progress);
-        // });
+        keys.map(key => {
+            if (key === 'el0') console.log(key, props.currentElements[key].progress);
+        });
     }
 
-    // ----- 4 ----- //
-    // call(props) {
-    //     console.log(props);
-    //     if (props === 'footer') alert('Footer');
-    // }
+    call(func, args, obj) {
+        // ----- 1 ----- //
+        console.log(func, args, obj);
+        this[func](args);
+    }
 
-    // ----- 2 ----- //
-    // calcDocumentSizes() {
-    //     const { body, documentElement: html } = document;
+    calcDocumentSizes() {
+        const { body, documentElement: html } = document;
 
-    //     this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-    // }
+        this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    }
 
-    // calcScrollProgress() {
-    //     const progress = Math.abs(this.scrollPosition) / (this.documentHeight - window.innerHeight);
-    //     this.scrollProgress.style.transform = `scale3d(${progress}, 1, 1)`;
-    // }
+    calcScrollProgress() {
+        const progress = Math.abs(this.scrollPosition) / (this.documentHeight - window.innerHeight);
+        this.scrollProgress.style.transform = `scale3d(${progress}, 1, 1)`;
+    }
+
+    // ----- 1 ----- //
+    footerAnimation(status) {
+        document.documentElement.classList[status === 'enter' ? 'add' : 'remove']('page-end');
+    }
 }
 
 export default Scroll;
