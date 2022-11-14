@@ -1,6 +1,8 @@
 import LocomotiveScroll from 'locomotive-scroll';
+import ScrollItem from './ScrollItem';
 
 class Scroll {
+    items = [];
     defaults = {
         scrollTime: 1000,
         containerSelector: '[data-scroll-container]',
@@ -20,6 +22,13 @@ class Scroll {
 
         this.calcDocumentSizes();
         window.addEventListener('resize', () => this.calcDocumentSizes());
+
+        // ----- 1 ----- //
+        const items = document.querySelectorAll('[data-scroll]');
+        for (let i = 0; i < items.length; i++) {
+            const item = new ScrollItem(items[i], i);
+            this.items[item.id] = item;
+        }
     }
 
     init() {
@@ -47,7 +56,7 @@ class Scroll {
 
     scroll(props) {
         // position, limit, speed, direction and currentElements
-        const { direction, scroll } = props;
+        const { direction, scroll, limit, currentElements } = props;
 
         this.scrollPosition = scroll.y;
 
@@ -72,10 +81,13 @@ class Scroll {
 
         if (this.progress) this.calcScrollProgress();
 
-        const keys = Object.keys(props.currentElements);
+        // console.log(currentElements);
 
+        // ----- 2 ----- //
+        const keys = Object.keys(currentElements);
         keys.map(key => {
-            if (key === 'el0') console.log(key, props.currentElements[key].progress);
+            const el = currentElements[key];
+            this.items[key]?.update(el);
         });
     }
 
@@ -87,7 +99,6 @@ class Scroll {
 
     calcDocumentSizes() {
         const { body, documentElement: html } = document;
-
         this.documentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
     }
 
