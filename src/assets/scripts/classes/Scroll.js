@@ -1,8 +1,10 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import ScrollItem from './ScrollItem';
+import ScrollItem__TextReveal from './ScrollItem__TextReveal';
 
 class Scroll {
     items = [];
+    classes = [];
     defaults = {
         scrollTime: 1000,
         containerSelector: '[data-scroll-container]',
@@ -24,10 +26,33 @@ class Scroll {
         window.addEventListener('resize', () => this.calcDocumentSizes());
 
         // ----- 1 ----- //
+        // const items = document.querySelectorAll('[data-scroll]');
+        // for (let i = 0; i < items.length; i++) {
+        // const item = items[i];
+        // const scrollItem = new ScrollItem(items[i], i);
+        // this.items[scrollItem.id] = scrollItem;
+        // }
+
+        // ----- 3 ----- //
+        this.classes['default'] = ScrollItem;
+        this.classes['text-reveal'] = ScrollItem__TextReveal;
+
         const items = document.querySelectorAll('[data-scroll]');
         for (let i = 0; i < items.length; i++) {
-            const item = new ScrollItem(items[i], i);
-            this.items[item.id] = item;
+            const item = items[i];
+
+            let scrollClass = 'default';
+            if (item.dataset.scrollClass !== undefined) {
+                scrollClass = item.dataset.scrollClass;
+            }
+
+            // console.log('CLASSES', this.classes);
+            // console.log('Scrollclass', scrollClass, this.classes[scrollClass]);
+
+            const scrollItem = new this.classes[scrollClass](items[i], i);
+
+            // console.log('SCROLL ITEM', this.classes[scrollClass]);
+            this.items[scrollItem.id] = scrollItem;
         }
     }
 
@@ -82,7 +107,6 @@ class Scroll {
         if (this.progress) this.calcScrollProgress();
 
         // console.log(currentElements);
-
         // ----- 2 ----- //
         const keys = Object.keys(currentElements);
         keys.map(key => {

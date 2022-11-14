@@ -2,6 +2,7 @@ class ScrollItem {
     target;
     id;
     index;
+    isVisible = false;
 
     constructor(target, index) {
         this.target = target;
@@ -16,8 +17,15 @@ class ScrollItem {
     }
 
     update(element) {
-        console.log('Progress', this.id, element.progress);
+        if (!this.isVisible) {
+            this.show();
+            this.isVisible = true;
+        }
+
+        console.log('Progress', element.progress);
     }
+
+    show() { }
 }
 
 export default ScrollItem;
