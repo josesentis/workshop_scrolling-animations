@@ -25,7 +25,7 @@ class Scroll {
         this.calcDocumentSizes();
         window.addEventListener('resize', () => this.calcDocumentSizes());
 
-        // ----- 1 ----- //
+        // ----- 2 ----- //
         // const items = document.querySelectorAll('[data-scroll]');
         // for (let i = 0; i < items.length; i++) {
         // const item = items[i];
@@ -34,26 +34,21 @@ class Scroll {
         // }
 
         // ----- 3 ----- //
-        this.classes['default'] = ScrollItem;
-        this.classes['text-reveal'] = ScrollItem__TextReveal;
+        // this.classes['default'] = ScrollItem;
+        // this.classes['text-reveal'] = ScrollItem__TextReveal;
 
-        const items = document.querySelectorAll('[data-scroll]');
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
+        // const items = document.querySelectorAll('[data-scroll]');
+        // for (let i = 0; i < items.length; i++) {
+        //     const item = items[i];
 
-            let scrollClass = 'default';
-            if (item.dataset.scrollClass !== undefined) {
-                scrollClass = item.dataset.scrollClass;
-            }
+        //     let scrollClass = 'default';
+        //     if (item.dataset.scrollClass !== undefined) {
+        //         scrollClass = item.dataset.scrollClass;
+        //     }
 
-            // console.log('CLASSES', this.classes);
-            // console.log('Scrollclass', scrollClass, this.classes[scrollClass]);
-
-            const scrollItem = new this.classes[scrollClass](items[i], i);
-
-            // console.log('SCROLL ITEM', this.classes[scrollClass]);
-            this.items[scrollItem.id] = scrollItem;
-        }
+        //     const scrollItem = new this.classes[scrollClass](items[i], i);
+        //     this.items[scrollItem.id] = scrollItem;
+        // }
     }
 
     init() {
@@ -68,7 +63,9 @@ class Scroll {
         });
 
         this.scroller.on('scroll', params => this.scroll(params));
-        this.scroller.on('call', (func, args, obj) => this.call(func, args, obj));
+
+        // ----- 1 ----- //
+        // this.scroller.on('call', (func, args, obj) => this.call(func, args, obj));
     }
 
     destroy() {
@@ -106,20 +103,21 @@ class Scroll {
 
         if (this.progress) this.calcScrollProgress();
 
-        // console.log(currentElements);
+        console.log(currentElements);
+
         // ----- 2 ----- //
-        const keys = Object.keys(currentElements);
-        keys.map(key => {
-            const el = currentElements[key];
-            this.items[key]?.update(el);
-        });
+        // const keys = Object.keys(currentElements);
+        // keys.map(key => {
+        //     const el = currentElements[key];
+        //     this.items[key]?.update(el);
+        // });
     }
 
-    call(func, args, obj) {
-        // ----- 1 ----- //
-        console.log(func, args, obj);
-        this[func](args);
-    }
+    // ----- 1 ----- //
+    // call(func, args, obj) {
+    //     console.log(func, args, obj);
+    //     this[func](args);
+    // }
 
     calcDocumentSizes() {
         const { body, documentElement: html } = document;
@@ -132,9 +130,9 @@ class Scroll {
     }
 
     // ----- 1 ----- //
-    footerAnimation(status) {
-        document.documentElement.classList[status === 'enter' ? 'add' : 'remove']('page-end');
-    }
+    // footerAnimation(status) {
+    //     document.documentElement.classList[status === 'enter' ? 'add' : 'remove']('page-end');
+    // }
 }
 
 export default Scroll;
