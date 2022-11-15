@@ -2,6 +2,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 
 import ScrollItem from './ScrollItem';
 import ScrollItem__ImgScale from './ScrollItem__ImgScale';
+import ScrollItem__ImgSkew from './ScrollItem__ImgSkew';
 import ScrollItem__TextReveal from './ScrollItem__TextReveal';
 
 class Scroll {
@@ -30,8 +31,7 @@ class Scroll {
         this.classes['default'] = ScrollItem;
         this.classes['text-reveal'] = ScrollItem__TextReveal;
         this.classes['img-scale'] = ScrollItem__ImgScale;
-
-        console.log('CLASSES', this.classes);
+        this.classes['img-skew'] = ScrollItem__ImgSkew;
 
         const items = document.querySelectorAll('[data-scroll]');
         for (let i = 0; i < items.length; i++) {
@@ -45,8 +45,6 @@ class Scroll {
             const scrollItem = new this.classes[scrollClass](items[i], i);
             this.items[scrollItem.id] = scrollItem;
         }
-
-        console.log('CLASSES', this.items);
     }
 
     init() {
@@ -57,7 +55,8 @@ class Scroll {
             smooth: true,
             tablet: { smooth: true },
             smartphone: { smooth: true },
-            getDirection: true
+            getDirection: true,
+            getSpeed: true
         });
 
         this.scroller.on('scroll', params => this.scroll(params));
@@ -74,7 +73,7 @@ class Scroll {
 
     scroll(props) {
         // position, limit, speed, direction and currentElements
-        const { direction, scroll, limit, currentElements } = props;
+        const { direction, scroll, limit, currentElements, speed } = props;
 
         this.scrollPosition = scroll.y;
 
@@ -103,7 +102,7 @@ class Scroll {
         const keys = Object.keys(currentElements);
         keys.map(key => {
             const el = currentElements[key];
-            this.items[key]?.update(el);
+            this.items[key]?.update(el, props);
         });
     }
 

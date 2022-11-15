@@ -16,7 +16,7 @@ class ScrollItem {
         target.dataset.scrollId = this.id;
     }
 
-    update(element) {
+    update(element, props) {
         if (!this.isVisible) {
             this.show();
             this.isVisible = true;

@@ -23,6 +23,7 @@
         img {
             height: 50vh;
             transform-origin: center center;
+            transform-style: preserve-3d;
             width: auto;
         }
     }
