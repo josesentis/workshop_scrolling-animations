@@ -16,8 +16,8 @@ class ScrollItem__TextReveal extends ScrollItem {
         gsap.set(this.texts, { opacity: 0 });
     }
 
-    update(element) {
-        super.update(element);
+    update(element, props) {
+        super.update(element, props);
     }
 
     show() {

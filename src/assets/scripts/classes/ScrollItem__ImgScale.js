@@ -12,8 +12,8 @@ class ScrollItem__ImgScale extends ScrollItem {
         this.img = target.querySelector('img');
     }
 
-    update(element) {
-        super.update(element);
+    update(element, props) {
+        super.update(element, props);
 
         // ---- 1 ---- //
         const p = element.progress.toFixed(2);
