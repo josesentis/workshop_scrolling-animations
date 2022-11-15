@@ -1,25 +1,30 @@
-.block-speeds {
+.block-image {
     --font-size-h2: var(--font-size-large);
     --color: var(--primary);
     --padding-v: var(--padding-xxl);
     --padding-h: var(--padding-l);
 }
 
-.block-speeds {
+.block-image {
+    background-color: var(--grey);
     padding: var(--padding-v) var(--padding-h);
+    
+    > div {
+        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+    }
 
     h2 {
         @include font-sans-bold(1);
         font-size: var(--font-size-h2);
-        margin: .5em 0;
     }
 
-    .wrapper {
-        display: flex;
-        justify-content: space-between;
+    .content {
+        flex: 0 0 50%;
 
-        > * {
-            width: 30%;
+        p:not(:last-child) {
+            margin-bottom: var(--padding-m);
         }
     }
 }

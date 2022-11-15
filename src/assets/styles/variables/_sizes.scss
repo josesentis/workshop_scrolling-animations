@@ -1,6 +1,7 @@
 :root {
   --y-header: 0;
 
+  --padding-xxl: #{(240px / 16px) * 1rem};
   --padding-xl: #{(120px / 16px) * 1rem};
   --padding-l: #{(90px / 16px) * 1rem};
   --padding-m: #{(60px / 16px) * 1rem};
