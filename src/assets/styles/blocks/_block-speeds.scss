@@ -1,0 +1,25 @@
+.block-speeds {
+    --font-size-h2: var(--font-size-large);
+    --color: var(--primary);
+    --padding-v: var(--padding-xl);
+    --padding-h: var(--padding-l);
+}
+
+.block-speeds {
+    padding: var(--padding-v) var(--padding-h);
+
+    h2 {
+        @include font-sans-bold(1);
+        font-size: var(--font-size-h2);
+        margin: .5em 0;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        > * {
+            width: 30%;
+        }
+    }
+}

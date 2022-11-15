@@ -67,14 +67,3 @@
         color: inherit;
     }
 }
-
-@media (max-width: $smartphone) {
-  .block-default {
-      --font-size-h1: var(--font-size-mid);
-      --font-size-h2: var(--font-size-mid);
-      --font-size-h3: var(--font-size-mid);
-      --font-size: var(--font-size-base);
-      --padding-v: var(--padding-l);
-      --padding-h: var(--padding-xs);
-  }
-}
