@@ -1,0 +1,47 @@
+.block-slider-horizontal-scroll {
+    --font-size: var(--font-size-large);
+    --padding-v: var(--padding-xxl);
+    --padding-h: var(--padding-l);
+}
+
+.block-slider-horizontal-scroll {
+    background-color: var(--grey);
+    height: var(--height);
+    padding: var(--padding-v) var(--padding-h);
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+
+    h2 {
+        @include font-sans-bold(1);
+        font-size: var(--font-size-h2);
+    }
+
+    .holder {
+        display: flex;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: auto;
+    }
+    
+    .slide {
+        @include font-sans();
+        background-color: yellow;
+        color: var(--black);
+        font-size: var(--font-size);
+        width: 100vw;
+
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    > div {
+        height: 100vh;
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+    }
+}

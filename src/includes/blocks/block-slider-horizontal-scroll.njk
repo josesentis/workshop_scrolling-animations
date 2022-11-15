@@ -1,0 +1,18 @@
+    {# data-scroll-class="slider-horizontal-scroll"  #}
+<section 
+    id="block-slider-horizontal-scroll"
+    class="block-slider-horizontal-scroll"
+    data-scroll 
+    style="--height: 500vw;"
+>
+    <h2 class="title">BLOCK SLIDER HORIZONTAL SCROLL</h2>
+    <div class="holder __holder">
+        <div class="slide"></div>
+        {% for item in range(0, 3) %}
+            <div class="slide">
+                {{ item }}
+            </div>
+        {% endfor %}
+        <div class="slide"></div>
+    </div>
+</section>
