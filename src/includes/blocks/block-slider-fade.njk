@@ -1,0 +1,17 @@
+<section class="block-slider-fade">
+    <h2 class="title">BLOCK SLIDER FADE</h2>
+    <div
+        id="block-slider-fade"
+        class="slider"
+        data-scroll 
+        data-scroll-class="slider-fade" 
+        style="--height: 300vh;"
+    >
+    <div data-scroll data-scroll-sticky data-scroll-target="#block-slider-fade">
+        {% for item in range(1, 4) %}
+            <div class="slide" data-scroll-slider>
+                <span>{{ item }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</section>

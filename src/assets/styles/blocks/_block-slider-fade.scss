@@ -1,0 +1,51 @@
+.block-slider-fade {
+    --font-size: var(--font-size-large);
+    --padding-v: var(--padding-xxl);
+    --padding-h: var(--padding-l);
+}
+
+.block-slider-fade {
+    background-color: var(--grey);
+    
+    .slider {
+        height: var(--height);
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+
+        > div {
+            height: 100vh;
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+        }
+    }
+
+    h2 {
+        @include font-sans-bold(1);
+        font-size: var(--font-size-h2);
+        padding: var(--padding-v) var(--padding-h);
+    }
+    
+    .slide {
+        @include font-sans();
+        background-color: aquamarine;
+        color: var(--black);
+        font-size: var(--font-size);
+        height: 100vh;
+        width: 100vw;
+        
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        span {
+            border: 2px solid black;
+            padding: var(--padding-l);
+        }
+    }
+}
