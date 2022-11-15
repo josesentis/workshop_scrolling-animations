@@ -22,7 +22,7 @@ class ScrollItem {
             this.isVisible = true;
         }
 
-        console.log('Progress', element.progress);
+        // console.log('Progress', element.progress);
     }
 
     show() { }

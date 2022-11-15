@@ -1,30 +1,29 @@
 .block-image {
     --font-size-h2: var(--font-size-large);
     --color: var(--primary);
-    --padding-v: var(--padding-xxl);
+    --padding-v: var(--padding-xl);
     --padding-h: var(--padding-l);
 }
 
 .block-image {
-    background-color: var(--grey);
+    color: var(--color);
     padding: var(--padding-v) var(--padding-h);
-    
-    > div {
-        align-items: flex-start;
-        display: flex;
-        justify-content: space-between;
-    }
 
     h2 {
         @include font-sans-bold(1);
         font-size: var(--font-size-h2);
     }
+        
+    .wrapper  {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
 
-    .content {
-        flex: 0 0 50%;
-
-        p:not(:last-child) {
-            margin-bottom: var(--padding-m);
+        img {
+            height: 50vh;
+            transform-origin: center center;
+            width: auto;
         }
     }
 }

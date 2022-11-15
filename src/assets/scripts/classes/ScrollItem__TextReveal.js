@@ -17,7 +17,7 @@ class ScrollItem__TextReveal extends ScrollItem {
     }
 
     update(element) {
-        super.update(element)
+        super.update(element);
     }
 
     show() {

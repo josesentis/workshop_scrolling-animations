@@ -7,6 +7,9 @@ const Maths = {
     },
     map: function (x, a, b, c, d) {
         return ((x - a) * (d - c)) / (b - a) + c;
+    },
+    clamp: function (val, min, max) {
+        return Math.min(max, Math.max(min, val));
     }
 }
 

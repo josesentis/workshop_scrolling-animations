@@ -1,5 +1,7 @@
 import LocomotiveScroll from 'locomotive-scroll';
+
 import ScrollItem from './ScrollItem';
+import ScrollItem__ImgScale from './ScrollItem__ImgScale';
 import ScrollItem__TextReveal from './ScrollItem__TextReveal';
 
 class Scroll {
@@ -27,6 +29,9 @@ class Scroll {
 
         this.classes['default'] = ScrollItem;
         this.classes['text-reveal'] = ScrollItem__TextReveal;
+        this.classes['img-scale'] = ScrollItem__ImgScale;
+
+        console.log('CLASSES', this.classes);
 
         const items = document.querySelectorAll('[data-scroll]');
         for (let i = 0; i < items.length; i++) {
@@ -40,6 +45,8 @@ class Scroll {
             const scrollItem = new this.classes[scrollClass](items[i], i);
             this.items[scrollItem.id] = scrollItem;
         }
+
+        console.log('CLASSES', this.items);
     }
 
     init() {
