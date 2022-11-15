@@ -3,6 +3,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import ScrollItem from './ScrollItem';
 import ScrollItem__ImgScale from './ScrollItem__ImgScale';
 import ScrollItem__ImgSkew from './ScrollItem__ImgSkew';
+import ScrollItem__SliderFade from './ScrollItem__SliderFade';
 import ScrollItem__SliderHorizontalScroll from './ScrollItem__SliderHorizontalScroll';
 import ScrollItem__TextReveal from './ScrollItem__TextReveal';
 
@@ -34,6 +35,7 @@ class Scroll {
         this.classes['img-scale'] = ScrollItem__ImgScale;
         this.classes['img-skew'] = ScrollItem__ImgSkew;
         this.classes['slider-horizontal-scroll'] = ScrollItem__SliderHorizontalScroll;
+        this.classes['slider-fade'] = ScrollItem__SliderFade;
 
         const items = document.querySelectorAll('[data-scroll]');
         for (let i = 0; i < items.length; i++) {
