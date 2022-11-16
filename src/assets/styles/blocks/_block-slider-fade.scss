@@ -29,7 +29,6 @@
     
     .slide {
         @include font-sans();
-        background-color: aquamarine;
         color: var(--black);
         font-size: var(--font-size);
         height: 100vh;

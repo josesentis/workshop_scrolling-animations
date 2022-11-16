@@ -37,55 +37,36 @@ class ScrollItem__ObjectMove extends ScrollItem {
         this.items = target.querySelectorAll('[data-scroll-object]');
         gsap.set(this.object, { opacity: 0 });
 
-        // ---- 3 ---- //
-        // this._loop = () => this.loop();
+        this._loop = () => this.loop();
     }
 
     update(element, props) {
         super.update(element, props);
 
-        // ---- 1 ---- //
+        this.progress = element.progress;
+
         if (props.scroll.y > element.top && props.scroll.y + window.innerHeight < element.bottom && !this.isShow) {
             gsap.to(this.object, { opacity: 1 });
             this.isShow = true;
+            gsap.ticker.add(this._loop);
         } else {
             gsap.to(this.object, { opacity: 0 });
             this.isShow = false;
+            gsap.ticker.remove(this._loop);
         }
-
-        // ---- 2 ---- //
-        // const p = parseInt(Maths.lerp(0, this.items.length, element.progress));
-        // gsap.set(this.object, {
-        //     left: `${POSITIONS[p].x}%`,
-        //     top: `${POSITIONS[p].y}%`
-        // });
-
-        // ---- 3 ---- //
-        // this.progress = element.progress;
-
-        // if (props.scroll.y > element.top && props.scroll.y + window.innerHeight < element.bottom && !this.isShow) {
-        //     gsap.to(this.object, { opacity: 1 });
-        //     this.isShow = true;
-        //     gsap.ticker.add(this._loop);
-        // } else {
-        //     gsap.to(this.object, { opacity: 0 });
-        //     this.isShow = false;
-        //     gsap.ticker.remove(this._loop);
-        // }
     }
 
-    // ---- 3 ---- //
-    // loop() {
-    //     const p = parseInt(Maths.lerp(0, this.items.length, this.progress));
+    loop() {
+        const p = parseInt(Maths.lerp(0, this.items.length, this.progress));
 
-    //     this.x = Maths.lerp(this.x, POSITIONS[p].x, .06);
-    //     this.y = Maths.lerp(this.y, POSITIONS[p].y, .06);
+        this.x = Maths.lerp(this.x, POSITIONS[p].x, .06);
+        this.y = Maths.lerp(this.y, POSITIONS[p].y, .06);
 
-    //     gsap.set(this.object, {
-    //         left: `${this.x}%`,
-    //         top: `${this.y}%`
-    //     });
-    // }
+        gsap.set(this.object, {
+            left: `${this.x}%`,
+            top: `${this.y}%`
+        });
+    }
 }
 
 export default ScrollItem__ObjectMove;

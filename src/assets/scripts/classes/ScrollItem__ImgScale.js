@@ -15,31 +15,13 @@ class ScrollItem__ImgScale extends ScrollItem {
     update(element, props) {
         super.update(element, props);
 
-        // ---- 1 ---- //
         const p = element.progress.toFixed(2);
-        console.log(p);
+        const scale = Maths.clamp(Maths.map(p, .25, .5, .5, 1), .5, 1);
+        console.log(p, scale);
         gsap.to(this.img, {
-            scaleX: p,
-            scaleY: p
+            scaleX: scale,
+            scaleY: scale
         });
-
-        // ---- 2 ---- //
-        // const p = element.progress.toFixed(2);
-        // const scale = Maths.map(p, 0, .5, .25, 1)
-        // console.log(p, scale);
-        // gsap.to(this.img, {
-        //     scaleX: scale,
-        //     scaleY: scale
-        // });
-
-        // ---- 3 ---- //
-        // const p = element.progress.toFixed(2);
-        // const scale = Maths.clamp(Maths.map(p, .25, .5, .5, 1), .5, 1);
-        // console.log(p, scale);
-        // gsap.to(this.img, {
-        //     scaleX: scale,
-        //     scaleY: scale
-        // });
     }
 }
 

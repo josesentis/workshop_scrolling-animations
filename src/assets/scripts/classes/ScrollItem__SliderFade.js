@@ -19,7 +19,6 @@ class ScrollItem__SliderFade extends ScrollItem {
     update(element, props) {
         super.update(element, props);
 
-        // ---- 1 ---- //
         const p = parseInt(Maths.lerp(0, this.items.length, element.progress));
         console.log(p);
         for (let i = 0; i < this.items.length; i++) {

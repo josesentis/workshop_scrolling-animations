@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 
-import Maths from '../utils/Maths';
 import ScrollItem from './ScrollItem';
 
 class ScrollItem__SliderHorizontalScroll extends ScrollItem {
@@ -18,12 +17,11 @@ class ScrollItem__SliderHorizontalScroll extends ScrollItem {
     update(element, props) {
         super.update(element, props);
 
-        // ---- 1 ---- //
-        // const p = element.progress.toFixed(2);
-        // console.log(p * 100);
-        // gsap.to(this.holder, {
-        //     translateX: `-${p * 100}%`
-        // });
+        const p = element.progress.toFixed(2);
+        console.log(p * 100);
+        gsap.to(this.holder, {
+            translateX: `-${p * 100}%`
+        });
     }
 }
 

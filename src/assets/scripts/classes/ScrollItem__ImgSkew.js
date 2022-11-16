@@ -15,26 +15,11 @@ class ScrollItem__ImgSkew extends ScrollItem {
     update(element, props) {
         super.update(element, props);
 
-        // ---- 1 ---- //
-        const s = props.speed.toFixed(2);
+        const s = Maths.clamp(props.speed.toFixed(2) * 10, -75, 75);
         console.log(s);
         gsap.to(this.img, {
-            skewX: `${s}deg`
+            rotateX: `${s}deg`
         });
-
-        // ---- 2 ---- //
-        // const s = props.speed.toFixed(2) * 5
-        // console.log(s);
-        // gsap.to(this.img, {
-        //     rotateX: `${s}deg`
-        // });
-
-        // ---- 3 ---- //
-        // const s = Maths.clamp(props.speed.toFixed(2) * 10, -75, 75);
-        // console.log(s);
-        // gsap.to(this.img, {
-        //     rotateX: `${s}deg`
-        // });
     }
 }
 
