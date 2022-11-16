@@ -1,4 +1,4 @@
-import gsap, { Power2 } from 'gsap';
+import gsap from 'gsap';
 
 import Maths from '../utils/Maths';
 import ScrollItem from './ScrollItem';

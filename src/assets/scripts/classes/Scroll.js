@@ -3,6 +3,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import ScrollItem from './ScrollItem';
 import ScrollItem__ImgScale from './ScrollItem__ImgScale';
 import ScrollItem__ImgSkew from './ScrollItem__ImgSkew';
+import ScrollItem__ObjectMove from './ScrollItem__ObjectMove';
 import ScrollItem__SliderFade from './ScrollItem__SliderFade';
 import ScrollItem__SliderHorizontalScroll from './ScrollItem__SliderHorizontalScroll';
 import ScrollItem__TextReveal from './ScrollItem__TextReveal';
@@ -36,14 +37,15 @@ class Scroll {
         this.classes['img-skew'] = ScrollItem__ImgSkew;
         this.classes['slider-horizontal-scroll'] = ScrollItem__SliderHorizontalScroll;
         this.classes['slider-fade'] = ScrollItem__SliderFade;
+        this.classes['object-move'] = ScrollItem__ObjectMove;
 
         const items = document.querySelectorAll('[data-scroll]');
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
 
             let scrollClass = 'default';
-            if (item.dataset.scrollClass !== undefined) {
-                scrollClass = item.dataset.scrollClass;
+            if (item.dataset.scrollType !== undefined) {
+                scrollClass = item.dataset.scrollType;
             }
 
             const scrollItem = new this.classes[scrollClass](items[i], i);
