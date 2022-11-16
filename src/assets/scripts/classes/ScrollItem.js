@@ -26,6 +26,8 @@ class ScrollItem {
     }
 
     show() { }
+
+    loop() { }
 }
 
 export default ScrollItem;

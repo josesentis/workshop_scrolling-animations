@@ -1,0 +1,10 @@
+<section id="block-object" style="--height: 400vh;" class="block-object" data-scroll-section>
+    <div data-scroll data-scroll-type="object-move">
+        <h2 class="title">BLOCK OBJECT</h2>
+        {% for item in range(1, 5) %}
+            <div class="slide" data-scroll-object>
+                <span>POSITION {{ item }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</section>
